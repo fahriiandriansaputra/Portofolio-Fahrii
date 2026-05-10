@@ -1,495 +1,512 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Fahri Andrian Saputra</title>
 
-<title>Fahri Portfolio</title>
+  <style>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-    background:#050816;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* BACKGROUND ANIMATION */
-
-.bg-animation{
-    position:fixed;
-    width:100%;
-    height:100%;
-    z-index:-1;
-    overflow:hidden;
-}
-
-.bg-animation span{
-    position:absolute;
-    width:4px;
-    height:4px;
-    background:#38bdf8;
-    border-radius:50%;
-    box-shadow:0 0 20px #38bdf8;
-    animation:animate 10s linear infinite;
-}
-
-@keyframes animate{
-    0%{
-        transform:translateY(100vh) scale(0);
-    }
-    100%{
-        transform:translateY(-10vh) scale(1);
-    }
-}
-
-/* LOADING SCREEN */
-
-.loader{
-    position:fixed;
-    width:100%;
-    height:100vh;
-    background:#050816;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    transition:1s;
-}
-
-.loader h1{
-    color:#38bdf8;
-    font-size:50px;
-    text-shadow:0 0 20px #38bdf8;
-}
-
-/* NAVBAR */
-
-nav{
-    width:100%;
-    padding:20px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:fixed;
-    top:0;
-    z-index:1000;
-    backdrop-filter:blur(15px);
-    background:rgba(255,255,255,0.05);
-    border-bottom:1px solid rgba(255,255,255,0.1);
-}
-
-.logo{
-    font-size:28px;
-    font-weight:700;
-    color:#38bdf8;
-    text-shadow:0 0 10px #38bdf8;
-}
-
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:30px;
-}
-
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-nav ul li a:hover{
-    color:#38bdf8;
-}
-
-/* MOBILE MENU */
-
-.menu-btn{
-    display:none;
-    font-size:30px;
-    cursor:pointer;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:120px 8%;
-    gap:60px;
-    flex-wrap:wrap;
-}
-
-.hero-text{
-    flex:1;
-    animation:fadeLeft 1s;
-}
-
-.hero-text h1{
-    font-size:65px;
-}
-
-.hero-text span{
-    color:#38bdf8;
-    text-shadow:0 0 15px #38bdf8;
-}
-
-.hero-text p{
-    margin-top:20px;
-    color:#cbd5e1;
-    line-height:1.8;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:30px;
-    padding:15px 35px;
-    border-radius:50px;
-    background:#38bdf8;
-    color:#050816;
-    text-decoration:none;
-    font-weight:600;
-    transition:0.4s;
-    box-shadow:0 0 20px #38bdf8;
-}
-
-.btn:hover{
-    transform:translateY(-5px);
-}
-
-/* GLASSMORPHISM */
-
-.glass{
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    backdrop-filter:blur(15px);
-    border-radius:25px;
-    box-shadow:0 8px 32px rgba(0,0,0,0.3);
-}
-
-/* FOTO */
-
-.hero-image img{
-    width:320px;
-    border-radius:30px;
-    border:3px solid #38bdf8;
-    box-shadow:
-    0 0 20px #38bdf8,
-    0 0 40px #38bdf8;
-    animation:float 3s ease-in-out infinite;
-}
-
-/* SECTION */
-
-section{
-    padding:100px 8%;
-}
-
-.title{
-    text-align:center;
-    font-size:40px;
-    margin-bottom:50px;
-    color:#38bdf8;
-}
-
-/* SKILL */
-
-.skills{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.card{
-    padding:30px;
-    transition:0.4s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-    border:1px solid #38bdf8;
-    box-shadow:0 0 20px #38bdf8;
-}
-
-.card h3{
-    margin-bottom:15px;
-    color:#38bdf8;
-}
-
-/* SLIDER */
-
-.slider{
-    overflow:hidden;
-    position:relative;
-}
-
-.slide-track{
-    display:flex;
-    gap:20px;
-    animation:scroll 20s linear infinite;
-}
-
-.slide{
-    min-width:300px;
-    height:200px;
-    padding:20px;
-}
-
-@keyframes scroll{
-    0%{
-        transform:translateX(0);
-    }
-    100%{
-        transform:translateX(-100%);
-    }
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#94a3b8;
-}
-
-/* SCROLL ANIMATION */
-
-.hidden{
-    opacity:0;
-    transform:translateY(50px);
-    transition:1s;
-}
-
-.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ANIMATION */
-
-@keyframes fadeLeft{
-    from{
-        opacity:0;
-        transform:translateX(-50px);
-    }
-    to{
-        opacity:1;
-        transform:translateX(0);
-    }
-}
-
-@keyframes float{
-    0%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
-    100%{
-        transform:translateY(0);
-    }
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-    nav ul{
-        position:absolute;
-        top:80px;
-        left:0;
-        width:100%;
-        background:#0f172a;
-        flex-direction:column;
-        text-align:center;
-        display:none;
-        padding:20px 0;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+      font-family:Arial,sans-serif;
     }
 
-    nav ul.active{
-        display:flex;
+    body{
+      background:linear-gradient(to bottom,#071739,#0a2d6f);
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* NAVBAR */
+
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:32px;
+      font-weight:bold;
+      color:#4db5ff;
+      text-shadow:0 0 20px #4db5ff;
     }
 
     .menu-btn{
-        display:block;
+      font-size:35px;
+      cursor:pointer;
     }
 
-    .hero-text h1{
-        font-size:45px;
+    /* SIDEBAR */
+
+    .sidebar{
+      position:fixed;
+      top:0;
+      right:-300px;
+      width:300px;
+      height:100%;
+      background:rgba(0,0,0,0.92);
+      padding:40px 25px;
+      transition:0.5s;
+      z-index:2000;
+    }
+
+    .sidebar.active{
+      right:0;
+    }
+
+    .sidebar h2{
+      margin-bottom:25px;
+      color:#4db5ff;
+    }
+
+    .sidebar a{
+      display:block;
+      color:white;
+      text-decoration:none;
+      margin:18px 0;
+      font-size:18px;
+      transition:0.3s;
+    }
+
+    .sidebar a:hover{
+      color:#4db5ff;
+      transform:translateX(10px);
+    }
+
+    /* HERO */
+
+    section{
+      min-height:100vh;
+      padding:120px 10%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
     }
 
     .hero{
-        text-align:center;
+      text-align:center;
     }
 
-}
+    .hero img{
+      width:230px;
+      height:230px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #4db5ff;
+      box-shadow:0 0 30px #4db5ff;
+      margin-bottom:25px;
+      animation:floating 3s ease-in-out infinite;
+    }
 
-</style>
+    @keyframes floating{
+      0%{
+        transform:translateY(0px);
+      }
+      50%{
+        transform:translateY(-15px);
+      }
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    .hero h1{
+      font-size:60px;
+      color:#4db5ff;
+      text-shadow:0 0 20px #4db5ff;
+    }
+
+    .hero p{
+      margin-top:20px;
+      font-size:22px;
+      max-width:800px;
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    /* TITLE */
+
+    .section-title{
+      font-size:50px;
+      color:#4db5ff;
+      margin-bottom:40px;
+      text-shadow:0 0 15px #4db5ff;
+      text-align:center;
+    }
+
+    /* CARD */
+
+    .card-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      width:100%;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.15);
+      backdrop-filter:blur(10px);
+      border-radius:25px;
+      overflow:hidden;
+      transition:0.4s;
+      box-shadow:0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.03);
+      box-shadow:0 0 30px #4db5ff;
+    }
+
+    .card img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      color:#4db5ff;
+      margin-bottom:10px;
+      font-size:24px;
+    }
+
+    .card-content p{
+      line-height:1.7;
+      color:#ddd;
+    }
+
+    /* CONTACT */
+
+    .contact-box{
+      background:rgba(255,255,255,0.08);
+      padding:35px;
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,0.1);
+      width:100%;
+      max-width:700px;
+      text-align:center;
+      line-height:2;
+      font-size:20px;
+      backdrop-filter:blur(10px);
+    }
+
+    /* FOOTER */
+
+    footer{
+      text-align:center;
+      padding:30px;
+      background:rgba(0,0,0,0.4);
+      color:#aaa;
+    }
+
+    /* SCROLL ANIMATION */
+
+    .fade{
+      opacity:0;
+      transform:translateY(50px);
+      transition:all 1s ease;
+    }
+
+    .fade.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:40px;
+      }
+
+      .section-title{
+        font-size:35px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      header{
+        padding:20px;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-    <h1>FAHRI</h1>
-</div>
+  <!-- NAVBAR -->
 
-<!-- BACKGROUND -->
-<div class="bg-animation">
-    <span style="left:10%; animation-duration:8s;"></span>
-    <span style="left:20%; animation-duration:10s;"></span>
-    <span style="left:30%; animation-duration:7s;"></span>
-    <span style="left:50%; animation-duration:12s;"></span>
-    <span style="left:70%; animation-duration:9s;"></span>
-    <span style="left:90%; animation-duration:11s;"></span>
-</div>
-
-<!-- NAVBAR -->
-<nav>
+  <header>
 
     <div class="logo">FAHRI.</div>
 
-    <ul id="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Skill</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
-
     <div class="menu-btn" onclick="toggleMenu()">☰</div>
 
-</nav>
+  </header>
 
-<!-- HERO -->
-<section class="hero">
+  <!-- SIDEBAR -->
 
-<div class="hero-text hidden">
-    <h1>Halo, Saya <span>Fahri</span></h1>
+  <div class="sidebar" id="sidebar">
 
-    <p>
-        Fresh graduate SMK dengan minat di bidang teknologi,
-        editing foto, dan operasional retail.
+    <h2>Menu Website</h2>
+
+    <a href="#about">Tentang</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#project">Project</a>
+    <a href="#contact">Kontak</a>
+
+    <br>
+
+    <p style="line-height:1.8;color:#bbb;">
+      Website portfolio modern dengan desain neon,
+      glassmorphism, dark mode, dan animasi scrolling.
     </p>
 
-    <a href="#" class="btn">Portfolio Saya</a>
-</div>
+  </div>
 
-<div class="hero-image hidden">
-    <img src="lv_0_20260510163320.jpg">
-</div>
+  <!-- HERO -->
 
-</section>
+  <section class="hero fade" id="about">
 
-<!-- SKILL -->
-<section>
+    <img src="lv_0_20260510163320.jpg" alt="Pas Foto">
 
-<h2 class="title hidden">Skill</h2>
+    <h1>FAHRI ANDRIAN SAPUTRA</h1>
 
-<div class="skills">
+    <p>
+      Fresh graduate SMK dengan minat di bidang editing foto,
+      desain visual modern, dan pengembangan website HTML portfolio.
+      Memiliki pengalaman PKL di bidang retail dan pelayanan pelanggan.
+    </p>
 
-<div class="card glass hidden">
-<h3>Editing Foto</h3>
-<p>Editing pas foto dan manipulasi warna.</p>
-</div>
+  </section>
 
-<div class="card glass hidden">
-<h3>Pelayanan</h3>
-<p>Melayani pelanggan dengan baik.</p>
-</div>
+  <!-- PORTFOLIO -->
 
-<div class="card glass hidden">
-<h3>Teknologi</h3>
-<p>Mengoperasikan smartphone dan komputer.</p>
-</div>
+  <section id="portfolio" class="fade">
 
-</div>
+    <h2 class="section-title">Portfolio</h2>
 
-</section>
+    <div class="card-container">
 
-<!-- SLIDER -->
-<section>
+      <!-- CV -->
 
-<h2 class="title hidden">Portfolio</h2>
+      <div class="card">
 
-<div class="slider">
+        <img src="file_00000000ddfc7206b9137c28044b23b2.png" alt="CV">
 
-<div class="slide-track">
+        <div class="card-content">
 
-<div class="slide glass">
-<h3>Design CV</h3>
-<p>Modern CV Design</p>
-</div>
+          <h3>Desain CV</h3>
 
-<div class="slide glass">
-<h3>Photo Editing</h3>
-<p>Before After Editing</p>
-</div>
+          <p>
+            CV modern dengan konsep profesional,
+            clean, dan elegan sesuai identitas personal.
+          </p>
 
-<div class="slide glass">
-<h3>Poster Design</h3>
-<p>Simple Modern Poster</p>
-</div>
+        </div>
 
-<div class="slide glass">
-<h3>UI Design</h3>
-<p>Dark Modern UI</p>
-</div>
+      </div>
 
-</div>
+      <!-- EDITING -->
 
-</div>
+      <div class="card">
 
-</section>
+        <img src="Proyek Baru [7F0C44F].png" alt="Editing">
 
-<footer>
-© 2026 Fahri Andrian Saputra
-</footer>
+        <div class="card-content">
 
-<script>
+          <h3>Editing Foto</h3>
 
-/* LOADER */
+          <p>
+            Hasil editing before after menggunakan teknik
+            lighting, color grading, dan retouch modern.
+          </p>
 
-window.addEventListener("load",function(){
-    document.getElementById("loader").style.opacity="0";
+        </div>
 
-    setTimeout(()=>{
-        document.getElementById("loader").style.display="none";
-    },1000);
-});
+      </div>
 
-/* MOBILE MENU */
+      <!-- PKL -->
 
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
+      <div class="card">
 
-/* SCROLL ANIMATION */
+        <img src="IMG_20250718_130542_060.jpg" alt="PKL">
 
-const hiddenElements=document.querySelectorAll('.hidden');
+        <div class="card-content">
 
-const observer=new IntersectionObserver((entries)=>{
-    entries.forEach((entry)=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
+          <h3>Dokumentasi PKL</h3>
+
+          <p>
+            Pengalaman PKL di bidang retail dan stationery,
+            melakukan display barang dan pelayanan pelanggan.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECT -->
+
+  <section id="project" class="fade">
+
+    <h2 class="section-title">Project Website</h2>
+
+    <div class="card-container">
+
+      <div class="card">
+
+        <div class="card-content">
+
+          <h3>Website Portfolio HTML</h3>
+
+          <p>
+            Project pembuatan website portfolio modern menggunakan
+            HTML, CSS, dan JavaScript dengan tampilan 16:9.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-content">
+
+          <h3>Fitur Website</h3>
+
+          <p>
+            • Animasi scrolling<br>
+            • Neon effect<br>
+            • Dark mode modern<br>
+            • Glassmorphism<br>
+            • Responsive mobile<br>
+            • Sidebar menu<br>
+            • Portfolio gallery
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="card-content">
+
+          <h3>Teknologi Digunakan</h3>
+
+          <p>
+            HTML5<br>
+            CSS3<br>
+            JavaScript<br>
+            GitHub Pages
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact" class="fade">
+
+    <h2 class="section-title">Kontak</h2>
+
+    <div class="contact-box">
+
+      <p>
+        <b>Email:</b><br>
+        fahriiandriansaputra@gmail.com
+      </p>
+
+      <br>
+
+      <p>
+        <b>Nomor HP:</b><br>
+        +6287895917725
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    © 2026 Fahri Andrian Saputra
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* MENU */
+
+    function toggleMenu(){
+
+      document
+      .getElementById('sidebar')
+      .classList
+      .toggle('active');
+
+    }
+
+    /* SCROLL ANIMATION */
+
+    const fades =
+    document.querySelectorAll('.fade');
+
+    window.addEventListener('scroll',()=>{
+
+      fades.forEach(fade=>{
+
+        const top =
+        fade.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+
+          fade.classList.add('show');
+
         }
+
+      });
+
     });
-});
 
-hiddenElements.forEach((el)=>observer.observe(el));
-
-</script>
+  </script>
 
 </body>
-  </html>
+    </html>
